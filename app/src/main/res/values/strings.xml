@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name" translatable="false">ILR Player</string>
+    <string name="title_channel_list">Channels</string>
+    <string name="title_channel_detail">Channel Details</string>
+    <string name="title_playlist">Playlist</string>
+    <string name="msg_connection_error">Connection Error</string>
+    <string name="msg_save_cover">Save to gallery?</string>
+    <string name="title_favorites">Favorites</string>
+    <string name="action_website" translatable="false">iloveradio.de</string>
+    <string name="action_clear_favorites">Remove All</string>
+</resources>

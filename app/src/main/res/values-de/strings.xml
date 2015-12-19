@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_channel_list">Kanäle</string>
+    <string name="title_channel_detail">Kanal</string>
+    <string name="title_playlist">Playlist</string>
+    <string name="msg_connection_error">Verbindungsfehler</string>
+    <string name="msg_save_cover">In Gallerie speichern?</string>
+    <string name="title_favorites">Favoriten</string>
+    <string name="action_clear_favorites">Alle löschen</string>
+</resources>

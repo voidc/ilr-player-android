@@ -1,0 +1,10 @@
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/channel_list"
+    android:name="io.github.voidc.np4ilr.ui.ChannelListFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    tools:context=".ui.ChannelListActivity"
+    tools:layout="@android:layout/list_content" />

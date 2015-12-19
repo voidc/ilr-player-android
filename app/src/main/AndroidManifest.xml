@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.github.voidc.np4ilr">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ui.ChannelListActivity"
+            android:label="@string/title_channel_list"
+            android:screenOrientation="portrait">
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ChannelDetailActivity"
+            android:label="@string/title_channel_detail"
+            android:parentActivityName=".ui.ChannelListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/ChannelDetailTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ChannelListActivity" />
+        </activity>
+        <activity
+            android:name=".ui.PlaylistActivity"
+            android:label="@string/title_playlist"
+            android:parentActivityName=".ui.ChannelDetailActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ChannelDetailActivity" />
+        </activity>
+        <activity
+            android:name=".ui.FavoritesActivity"
+            android:label="@string/title_favorites"
+            android:parentActivityName=".ui.ChannelListActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.ChannelListActivity" />
+        </activity>
+
+        <service
+            android:name=".RadioService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <!--receiver android:name=".RemoteControlReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver-->
+    </application>
+
+</manifest>
