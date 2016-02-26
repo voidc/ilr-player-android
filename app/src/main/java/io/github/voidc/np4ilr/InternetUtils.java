@@ -15,7 +15,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.ParseException;
@@ -167,7 +166,7 @@ public class InternetUtils {
         return cover;
     }
 
-    public static void fetchChannelColors() throws Exception {
+    public static void fetchChannelColors() throws IOException {
         colorCache = new int[channelCache.size()];
         BufferedReader in = null;
         try {
@@ -178,7 +177,15 @@ public class InternetUtils {
             boolean readColor = false;
             for (int i = 0; (line = in.readLine()) != null; i++) {
                 if (readColor) {
-                    colorCache[colorIndex++] = Color.parseColor(line.substring(14, 21));
+                    String colorString = line.substring(14, line.length() - 1);
+                    if (colorString.length() == 4) {
+                        colorString = new String(new char[]{'#',
+                                colorString.charAt(1), colorString.charAt(1),
+                                colorString.charAt(2), colorString.charAt(2),
+                                colorString.charAt(3), colorString.charAt(3)
+                        });
+                    }
+                    colorCache[colorIndex++] = Color.parseColor(colorString);
                     readColor = false;
                 } else if (line.startsWith(".channel.channel") && line.length() <= 20) {
                     readColor = true;
@@ -188,7 +195,9 @@ public class InternetUtils {
                     break;
                 }
             }
-        } catch (MalformedURLException e) {
+        } catch (Exception e) {
+            if (e instanceof IOException)
+                throw e;
             e.printStackTrace();
         } finally {
             if (in != null) in.close();
